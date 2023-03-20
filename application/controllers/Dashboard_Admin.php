@@ -22,9 +22,8 @@ class Dashboard_Admin extends CI_Controller
         $this->load->model('Auth_Model');
         $id = $this->session->userdata('id');
         $data['user_loged'] = $this->Auth_Model->get_data_user_session($id)->row();
-
-        $this->load->model('Dashboard_Model');
-
+        $data['keyword']=  $this->input->get('keyword');
+        $data['surat'] =  $this->db->query("SELECT * FROM fibernode  WHERE node LIKE '%APS%'");
         $data['title'] = 'Dashboard';
         $data['total_surat_masuk'] = '1';
         $data['total_surat_keluar'] = '2';

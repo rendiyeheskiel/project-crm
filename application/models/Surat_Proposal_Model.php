@@ -9,6 +9,20 @@ class Surat_Proposal_Model extends CI_Model
         parent::__construct();
     }
 
+    public function search($keyword)
+    {
+	if(!$keyword){
+		return null;
+	}
+    $query = $this->db->query("SELECT * FROM fibernode  WHERE node LIKE '%APS%'");
+
+    // foreach ($query->result_array() as $row) {
+    //     $result[$indeks++] = $row;
+    // }
+
+	return $query;
+    }
+
     function get_all_surat()
     {
         $query = $this->db->query("SELECT * FROM fibernode ORDER BY node ASC");
